@@ -24,7 +24,7 @@ class Modal extends Component {
                   <span className="username"> by  
                     <Link 
                       className="username-link" 
-                      to={`/users?id=${activePost.owner.userId}`}
+                      to={`/users?id=${activePost.owner.id}`}
                     > {activePost.owner.username}</Link>
                   </span>
                   <button className="close-button" onClick={this.props.toggleModal}>Close</button>

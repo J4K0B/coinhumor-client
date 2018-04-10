@@ -18,6 +18,27 @@ const client = new ApolloClient({
   uri: 'http://localhost:8080/graphql',
   connectToDevTools: true,
   cache,
+  defaults: {
+    loginStatus: {
+      __typename: 'LoginStatus',
+      isLoggedIn: false,
+    }
+  },
+  resolvers: {
+    Mutation: {
+      updateLoginStatus: (_, { isLoggedIn }, { cache }) => {
+        const data = {
+          loginStatus: {
+            __typename: 'LoginStatus',
+            isLoggedIn
+          }
+        };
+        cache.writeData({ data });
+        return null;
+      }
+
+    }
+  }
 });
 
 class App extends Component {
