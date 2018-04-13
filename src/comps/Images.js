@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Modal from './Modal';
+
 class Images extends Component {
   constructor() {
     super();
@@ -12,6 +13,9 @@ class Images extends Component {
       activePostIndex: 0,
     };
   } 
+  componentDidMount() {
+    window.addEventListener('scroll', this.onScroll);
+  }
   render(){
     return (
       <React.Fragment>
@@ -53,6 +57,11 @@ class Images extends Component {
     }, () => {
       document.body.style.overflow = this.state.hideModal ? 'auto' : 'hidden';
     });
+  }
+  onScroll = () => {
+    if(window.scrollY + window.innerHeight === document.body.scrollHeight) {
+      this.props.onLoadMore();
+    }
   }
   setActivePostIndex = (i) => {
     if(i < 0 || i >= this.props.Posts.length)

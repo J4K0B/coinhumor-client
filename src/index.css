@@ -21,6 +21,7 @@ body {
   flex-wrap: wrap;
   width: auto;
   display: inline-block;
+  max-width: 1100px;
 }
 
 .image-container > img {

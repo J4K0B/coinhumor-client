@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
 export default gql`
-                {
-                  Posts {
+                query getPosts ($offset: Int, $limit: Int){
+                  Posts(offset: $offset, limit: $limit) {
                     id
                     thumbPath
                     picPath
