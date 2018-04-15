@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Modal from './Modal';
 
+let loading = false;
+
 class Images extends Component {
   constructor() {
     super();
@@ -58,14 +60,24 @@ class Images extends Component {
       document.body.style.overflow = this.state.hideModal ? 'auto' : 'hidden';
     });
   }
-  onScroll = () => {
-    if(window.scrollY + window.innerHeight === document.body.scrollHeight) {
-      this.props.onLoadMore();
+  onScroll = async () => {
+    if(window.scrollY + window.innerHeight >= document.body.scrollHeight - 150 && !loading) {
+      loading = true;
+      await this.props.onLoadMore();
+      loading = false;
     }
   }
-  setActivePostIndex = (i) => {
-    if(i < 0 || i >= this.props.Posts.length)
+  setActivePostIndex = async (i) => {
+    if(i < 0)
       return;
+    if(i === this.props.Posts.length && !loading) {
+      loading = true;
+      await this.props.onLoadMore();
+      loading = false;
+    }
+    if(i >= this.props.Posts.length) {
+      return;
+    }
     this.setState({
       activePostIndex: i
     });
