@@ -159,6 +159,19 @@ input {
   padding: 1rem 0.5rem;
   border-radius: 2%;
 }
+.tags {
+  display: block;
+}
+.tag {
+  border-radius: 40%;
+  font-size: 1rem;
+  background-color: #6b6b6b;
+  border: 0;
+  color: #fdfdfd;
+  padding: 8px 15px;
+  margin: 2px;
+  display: inline-block;
+}
 
 @media screen and (min-width: 600px) {
   .login-form {

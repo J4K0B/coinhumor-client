@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+
 import CommentSection from './CommentSection';
+import Tag from './Tag';
 
 class Modal extends Component {
   componentWillMount() {
@@ -11,6 +13,7 @@ class Modal extends Component {
   }
   render() {
     const { activePost } = this.props;
+    if(!activePost) return;
     return(
       <div 
         onClick={this.props.toggleModal}
@@ -39,6 +42,7 @@ class Modal extends Component {
                         <button>-</button>
                       </figcaption>
                     </figure>
+                    {activePost.tags.map(({ name }, i) => (<Tag name={name} key={i} />))}
                   </div>
                   <CommentSection 
                     history={this.props.history} 

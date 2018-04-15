@@ -3,6 +3,7 @@ import Dropzone from 'react-dropzone';
 import { ApolloConsumer } from 'react-apollo';
 
 import GET_POSTS from '../queries/get-posts';
+import Tag from '../comps/Tag';
 
 class createPost extends Component {
   constructor() {
@@ -38,6 +39,14 @@ class createPost extends Component {
               type="text"
               onChange={this.handleChangeTags}
             />
+            <div className="tags">
+              {
+                this.state.tags.length >= 1 &&
+                  this.state.tags.map((tag, i) => (<Tag name={tag} key={i}/>))
+                
+                
+              }
+            </div>
             <button onClick={() => this.handleSubmit(cache)}>Post</button>
           </div>
         )}

@@ -6,6 +6,10 @@ export default gql`
                     id
                     thumbPath
                     picPath
+                    tags {
+                      id
+                      name
+                    }
                     score
                     comments {
                       id
