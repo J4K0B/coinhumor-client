@@ -21,16 +21,18 @@ class Images extends Component {
   render(){
     return (
       <React.Fragment>
-        <div className="image-container">
-          {
-            this.props.Posts.map(({ thumbPath }, i) => (
-              <img 
-                onClick={() => this.setImageAndToggleModal(i)}
-                src={`http://localhost:8080${thumbPath}`}
-                key={i}
-                alt="Funny Crypto Meme"/>
-            ))
-          }
+        <div className="image-container-wrapper">
+          <div className="image-container">
+            {
+              this.props.Posts.map(({ thumbPath }, i) => (
+                <img 
+                  onClick={() => this.setImageAndToggleModal(i)}
+                  src={`http://localhost:8080${thumbPath}`}
+                  key={i}
+                  alt="Funny Crypto Meme"/>
+              ))
+            }
+          </div>
         </div>
         <Modal 
           toggleModal={this.toggleModal}

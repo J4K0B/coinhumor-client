@@ -2,18 +2,56 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  text-align: center;
   background-color: #303030;
   font-size: 18px;
   color: #fdfdfd;
 }
-.nav {
+
+a:visited {
+  color: inherit;
+}
+
+a{
+  text-decoration: none;
+}
+
+/* .nav {
   background-color: #212121;
 }
 .nav h1 {
   color: #fdfdfd;
   margin: 0;
   padding: 1rem;
+} */
+
+.Navbar {
+  display: flex;
+  background-color: #212121;
+  padding: 16px;
+  color: #fdfdfd;
+}
+
+.Navbar__Items {
+  display: flex;
+}
+
+.Navbar__Items--right {
+  margin-left: auto;
+}
+
+.Navbar__Link {
+  padding-right: 8px;
+}
+.Navbar__Link:hover {
+  cursor: pointer;
+  text-decoration: underline; 
+}
+.Navbar__Link-toggle {
+    display: none;
+}
+
+.image-container-wrapper {
+  text-align: center;
 }
 
 .image-container {
@@ -177,6 +215,29 @@ input {
   .login-form {
     max-width: 600px;
   }
+}
+
+@media screen and (max-width: 768px) {
+  .Navbar__Items,
+  .Navbar {
+    flex-direction: column;
+  }
+  .Navbar__Items {
+    display: none;
+  }
+  .Navbar__Items--right {
+    margin-left: 0;
+  }
+  .Navbar__Link-toggle {
+    align-self: flex-end;
+    display: initial;
+    position: absolute;
+    cursor: pointer;
+  }
+  .Navbar__ToggleShow {
+    display: flex;
+  }
+  
 }
 
 @media screen and (min-width: 1024px) {
