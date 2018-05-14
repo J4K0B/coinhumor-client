@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import Recaptcha from 'react-recaptcha';
+import { toast } from 'react-toastify';
 
 const LOGIN = gql`
   mutation login($login: String!, $password: String!, $captchaResponse: String!){
@@ -100,6 +101,7 @@ class Login extends Component {
       localStorage.setItem('username', user.username);
       localStorage.setItem('userId', user.id);
       this.props.history.push('/');
+      toast.success(`Welcome ${user.username}!`);
     });
   }
 }

@@ -51,6 +51,7 @@ class Images extends Component {
         activePostIndex 
       };
     });
+    this.props.history.push(`/post/?id=${this.props.Posts[activePostIndex].id}`);
     this.toggleModal();
   }
   toggleModal = () => {
@@ -60,6 +61,9 @@ class Images extends Component {
       };
     }, () => {
       document.body.style.overflow = this.state.hideModal ? 'auto' : 'hidden';
+      if(this.state.hideModal) {
+        this.props.history.push('/');
+      }
     });
   }
   onScroll = async () => {
@@ -83,6 +87,7 @@ class Images extends Component {
     this.setState({
       activePostIndex: i
     });
+    this.props.history.push(`/post/?id=${this.props.Posts[i].id}`);
   }
   
 } 

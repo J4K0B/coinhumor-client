@@ -43,8 +43,6 @@ class createPost extends Component {
               {
                 this.state.tags.length >= 1 &&
                   this.state.tags.map((tag, i) => (<Tag name={tag} key={i}/>))
-                
-                
               }
             </div>
             <button onClick={() => this.handleSubmit(cache)}>Post</button>

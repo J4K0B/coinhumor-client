@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import CommentSection from './CommentSection';
 import Tag from './Tag';
+import VotingSection from './VotingSection';
 
 class Modal extends Component {
   componentWillMount() {
@@ -37,9 +38,7 @@ class Modal extends Component {
                     <figure>
                       <img  src={`http://localhost:8080/${activePost.picPath}`} alt="Funny Crypto Meme" />
                       <figcaption className="voting"> 
-                        <button>+</button>
-                        {activePost.score} 
-                        <button>-</button>
+                        <VotingSection score={activePost.score} postId={activePost.id} />
                       </figcaption>
                     </figure>
                     {activePost.tags.map(({ name }, i) => (<Tag name={name} key={i} />))}
@@ -50,7 +49,6 @@ class Modal extends Component {
                     comments={activePost.comments}
                     toggleModal={this.props.toggleModal} 
                   />
-
                 </div>
               </div>
             </div>
