@@ -17,6 +17,8 @@ class Images extends Component {
   } 
   componentDidMount() {
     window.addEventListener('scroll', this.onScroll);
+    document.body.style.overflow = this.state.hideModal ? 'auto' : 'hidden';
+
   }
   render(){
     return (
@@ -51,7 +53,9 @@ class Images extends Component {
         activePostIndex 
       };
     });
-    this.props.history.push(`/post/?id=${this.props.Posts[activePostIndex].id}`);
+    if(!this.props.byId) {
+      this.props.history.push(`/post/?id=${this.props.Posts[activePostIndex].id}`);
+    }
     this.toggleModal();
   }
   toggleModal = () => {
@@ -61,7 +65,7 @@ class Images extends Component {
       };
     }, () => {
       document.body.style.overflow = this.state.hideModal ? 'auto' : 'hidden';
-      if(this.state.hideModal) {
+      if(this.state.hideModal && !this.props.byId) {
         this.props.history.push('/');
       }
     });
@@ -76,7 +80,7 @@ class Images extends Component {
   setActivePostIndex = async (i) => {
     if(i < 0)
       return;
-    if(i === this.props.Posts.length && !loading) {
+    if(i === this.props.Posts.length && !loading && !this.props.byId) {
       loading = true;
       await this.props.onLoadMore();
       loading = false;
@@ -87,7 +91,9 @@ class Images extends Component {
     this.setState({
       activePostIndex: i
     });
-    this.props.history.push(`/post/?id=${this.props.Posts[i].id}`);
+    if(!this.props.byId){
+      this.props.history.push(`/post/?id=${this.props.Posts[i].id}`);
+    }
   }
   
 } 

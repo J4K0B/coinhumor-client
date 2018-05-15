@@ -29,6 +29,7 @@ class Modal extends Component {
                     <Link 
                       className="username-link" 
                       to={`/users?id=${activePost.owner.id}`}
+                      onClick={() => this.props.toggleModal}
                     > {activePost.owner.username}</Link>
                   </span>
                   <button className="close-button" onClick={this.props.toggleModal}>Close</button>
@@ -71,7 +72,7 @@ class Modal extends Component {
     case 39:
       this.props.setActivePostIndex(activePostIndex + 1);
       break;
-    // enter
+    // escape
     case 27:
       this.props.toggleModal();
       break;

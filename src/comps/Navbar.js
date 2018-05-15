@@ -13,9 +13,9 @@ class Navbar extends Component {
     return( 
       <div className="Navbar">
         <div className="Navbar__Link Navbar__Link-brand">
-          <Link to="/">
+          <a href="/">
             CoinHumor
-          </Link>
+          </a>
         </div>
         <div className="Navbar__Link Navbar__Link-toggle" onClick={this.toggleMenu}>
           <span>☰</span>
