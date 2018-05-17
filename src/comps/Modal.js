@@ -5,6 +5,8 @@ import CommentSection from './CommentSection';
 import Tag from './Tag';
 import VotingSection from './VotingSection';
 
+import url from '../url';
+
 class Modal extends Component {
   componentWillMount() {
     document.addEventListener('keydown', this.handleKeyDown);
@@ -37,7 +39,7 @@ class Modal extends Component {
                 <div className="modal-main">
                   <div className="modal-img">
                     <figure>
-                      <img  src={`http://localhost:8080/${activePost.picPath}`} alt="Funny Crypto Meme" />
+                      <img  src={`${url}/${activePost.picPath}`} alt="Funny Crypto Meme" />
                       <figcaption className="voting"> 
                         <VotingSection score={activePost.score} postId={activePost.id} />
                       </figcaption>

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Modal from './Modal';
 
+import url from '../url';
+
 let loading = false;
 
 class Images extends Component {
@@ -33,7 +35,7 @@ class Images extends Component {
               this.props.Posts.map(({ thumbPath }, i) => (
                 <img 
                   onClick={() => this.setImageAndToggleModal(i)}
-                  src={`http://localhost:8080${thumbPath}`}
+                  src={`${url}${thumbPath}`}
                   key={i}
                   alt="Funny Crypto Meme"/>
               ))

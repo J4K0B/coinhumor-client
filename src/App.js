@@ -5,17 +5,13 @@ import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import Routes from './routes';
-import './App.css';
-//import { createUploadLink } from 'apollo-upload-client';
 
-// const networkInterface = createUploadLink({
-//   uri: 'http://localhost:8080/graphql',
-// });
+import url from './url';
 
 const cache = new InMemoryCache();
 
 const client = new ApolloClient({
-  uri: 'http://localhost:8080/graphql',
+  uri: `${url}/graphql`,
   connectToDevTools: true,
   cache,
   defaults: {
