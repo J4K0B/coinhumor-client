@@ -20,6 +20,10 @@ class Images extends Component {
     document.body.style.overflow = this.state.hideModal ? 'auto' : 'hidden';
 
   }
+  componentWillUnmount(){
+    window.removeEventListener('scroll', this.onScroll);
+    document.body.style.overflow = 'auto';
+  }
   render(){
     return (
       <React.Fragment>

@@ -5,16 +5,23 @@ import GET_POSTS from '../queries/get-posts';
 
 class App extends Component {
   render() {
-    const regex = /\d+/;
-    let id = parseInt(this.props.history.location.search.match(regex)[0], 10);
+    const slashIndex = this.props.history.location.pathname.indexOf('/',1);
+    const tagName =  this.props.location.pathname.substring(slashIndex + 1);
+    
     return (
       <div>
-        <Query query={GET_POSTS} variables={{ userId: id }}
+        <Query query={GET_POSTS} variables={{ tagName }}
         >
           {({ loading, error, data: { Posts } }) => {
             if (loading) return <p>Loading...</p>;
             if (error) return <p>Error: {error}</p>;
-            const filteredPosts = Posts.filter(Post => Post.owner.id === id);
+            const filteredPosts = Posts.filter((post) => {
+              for(let tag of post.tags) {
+                if (tag.name === tagName)
+                  return true;
+              }
+              return false;
+            });
             if(filteredPosts.length < 1) {
               return <div>Nothing found here!</div>;
             }
@@ -24,6 +31,7 @@ class App extends Component {
               loading={loading}
               byId = {true}
             />;
+            
           }}
         </Query>
       </div>
@@ -32,5 +40,4 @@ class App extends Component {
 }
 
 export default App;
-
 

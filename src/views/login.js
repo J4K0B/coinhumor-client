@@ -3,6 +3,7 @@ import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import Recaptcha from 'react-recaptcha';
 import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 const LOGIN = gql`
   mutation login($login: String!, $password: String!, $captchaResponse: String!){
@@ -37,7 +38,7 @@ class Login extends Component {
         mutation={LOGIN}
       >
         {(mutate) => (
-          <div>
+          <div className="login">
             <h1>Login</h1>
             <form className="login-form" onSubmit={(e) => this.handleSubmit(e, mutate)}>
               <input onChange={this.handleLoginChange} type="text" value={this.state.login} placeholder="Login" />
@@ -59,6 +60,9 @@ class Login extends Component {
               }
               <button type="submit">Login</button>
             </form>
+            <div>
+              You still need an account? <Link className="link" to="/register"> Register here </Link>
+            </div>
           </div> 
         )}
       </Mutation>

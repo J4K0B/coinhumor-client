@@ -26,6 +26,7 @@ class Navbar extends Component {
   }
   getLogin= () => {
     const username = localStorage.getItem('username');
+    const userId = localStorage.getItem('userId');
     if(!username) return (
       <nav className={`Navbar__Items Navbar__Items--right ${this.state.show ? 'Navbar__ToggleShow' : ''}`} >
         <div className={'Navbar__Link'}>
@@ -36,7 +37,7 @@ class Navbar extends Component {
     return (
       <nav className={`Navbar__Items Navbar__Items--right ${this.state.show ? 'Navbar__ToggleShow' : ''}`}>
         <div className="Navbar__Link">
-          Welcome, {username}!
+          <Link to={`/users?id=${userId}`} >Welcome, {username}! </Link>
         </div>
         <div className="Navbar__Link">
           <Link to="/create-post" onClick={this.toggleMenu}>Create Post</Link>
@@ -49,6 +50,7 @@ class Navbar extends Component {
   }
   logout = () => {
     localStorage.removeItem('username');
+    localStorage.removeItem('userId');
     localStorage.removeItem('token');
     this.toggleMenu();
     this.forceUpdate();

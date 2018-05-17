@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import gql from 'graphql-tag';
 import { Query, Mutation } from 'react-apollo';
 import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 import GET_POSTS from '../queries/get-posts';
 
@@ -56,7 +57,7 @@ class VotingSection extends Component {
           )}
         </Query>
       );
-    return(<React.Fragment>{score} Login to Vote</React.Fragment>);
+    return(<React.Fragment>Score: {score} <Link to="/login">Login</Link> to Vote</React.Fragment>);
   }
   vote = (value, token, votePost, previousValue) => {
     const positive = value === 1 ? true : false;

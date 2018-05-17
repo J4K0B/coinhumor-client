@@ -8,6 +8,8 @@
     "apollo-cache-inmemory": "^1.1.12",
     "apollo-upload-client": "^8.0.0",
     "axios": "^0.18.0",
+    "complexity": "0.0.6",
+    "email-validator": "^2.0.3",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.8.0",
     "history": "^4.7.2",

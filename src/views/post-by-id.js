@@ -6,7 +6,7 @@ import GET_POSTS from '../queries/get-posts';
 class App extends Component {
   render() {
     const regex = /\d+/;
-    let id = parseInt(this.props.history.location.search.match(regex)[0]);
+    let id = parseInt(this.props.history.location.search.match(regex)[0], 10);
     return (
       <div>
         <Query query={GET_POSTS} variables={{ id }}
@@ -14,6 +14,9 @@ class App extends Component {
           {({ loading, error, data: { Posts } }) => {
             if (loading) return <p>Loading...</p>;
             if (error) return <p>Error: {error}</p>;
+            if(Posts.length < 1) {
+              return <div>Nothing found here!</div>;
+            }
             return <Images 
               Posts={Posts}
               history={this.props.history}
