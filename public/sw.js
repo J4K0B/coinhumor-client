@@ -4,13 +4,18 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches
       .open(staticCacheName)
-      .then(cache =>
-        cache.addAll([
-          '/static/js/main.ba9d4ad6.js',
+      .then(async cache => {
+        const manifestData = await fetch('/asset-manifest.json');
+        const manifest = await manifestData.json();
+        console.log(manifest);
+        return cache.addAll([
+          manifest['main.js'],
+          manifest['main.css'],
           '/iziToast.min.css',
           '/favicon.ico',
           '/index.html',
-        ]),
+        ]);
+      }
       ),
   );
 });
