@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
 import { ApolloConsumer } from 'react-apollo';
 
+import url from '../url';
 import GET_POSTS from '../queries/get-posts';
 import Tag from '../comps/Tag';
 
@@ -77,7 +78,7 @@ class createPost extends Component {
     data.append('token', token);
     data.append('tags', tags);
 
-    fetch('http://localhost:8080/create-post', {
+    fetch(`/create-post`, {
       method: 'POST',
       body: data,
     }).then( res => res.json())

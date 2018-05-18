@@ -1,4 +1,4 @@
-const staticCacheName = 'crypto-static-v1';
+const staticCacheName = 'crypto-static-v6';
 
 self.addEventListener('install', (event) => {
   event.waitUntil(

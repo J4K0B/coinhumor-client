@@ -12,7 +12,9 @@ class App extends Component {
           {({ loading, error, data : { Posts }, fetchMore }) => {
             if (loading) return <p>Loading...</p>;
             if (error) return <p>Error: </p>;
-
+	    if (Posts.length < 1) {
+	      return ( <div> Nothing found here.. </div> );
+	    }
             return <Images 
               Posts={Posts} 
               history={this.props.history}
